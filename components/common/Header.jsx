@@ -174,7 +174,7 @@ const MenuItems = styled.ul`
   @media ${menuCollapseQuery} {
     width: 100%;
     opacity: 0;
-    padding: 4px 24px 24px;
+    padding: 4px 0 24px;
     transform: translate3d(0, -150px, 0);
     transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.5s,opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
 
@@ -198,11 +198,7 @@ const MenuItem = styled.li`
     float: none;
     width: 100%;
     height: 44px;
-    
-    &:first-child a {
-      border: 0;
-    }
-    
+
     transition-delay: 0.63s;
     &:nth-child(1) a {
       transition-delay: 0.07s;
@@ -260,41 +256,70 @@ const MenuItem = styled.li`
   }
 `;
 const MenuLink = styled(Link)`
-  color: var( --foreground-color);
+  color: ${({ $current }) => $current ? 'var(--foreground-color)' : 'var(--glyph-gray)'};
   display: inline-block;
   line-height: 22px;
   white-space: nowrap;
-  opacity: 0.88;
+  opacity: ${({ $current }) => $current ? 0.92 : 0.56};
+  position: relative;
+
+  .main-nav &::after,
+  .island &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+    width: 100%;
+    height: 1.5px;
+    background: #fff;
+    opacity: ${({ $current }) => $current ? 1 : 0};
+    transform: scaleX(${({ $current }) => $current ? 1 : 0.85});
+    transform-origin: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+
   &:hover {
     color: var(--glyph-blue);
   }
-  ${({ $current }) => $current ? `
-    color: var(--foreground-color) !important;
-    opacity: 0.56;
-  ` : ``}
   @media ${menuCollapseQuery} {
-    border-top: 1px solid rgba(0,0,0,0.181818);
-    /* border-top: 1px solid var(--separator-color); */
-    [data-color-scheme="dark"] & {
-      border-color: rgba(255,255,255,0.26087);
-    }
     display: flex;
     align-items: center;
     height: 100%;
     line-height: 1.3;
+    padding-left: 12px;
+    position: relative;
     opacity: 0;
     transform: translate3d(0, -25px, 0);
     transition: 0.5s ease;
     transition-property: transform, opacity;
     width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 1.3em;
+      transform: translateY(-50%);
+      background: currentColor;
+      opacity: 0;
+    }
+
     .menu-open & {
-      opacity: ${({ $current }) => $current ? 0.56 : 0.92};
+      opacity: ${({ $current }) => $current ? 0.92 : 0.56};
       transform: translate3d(0, 0, 0);
     }
+
+    .main-nav &::after,
+    .island &::after {
+      display: none;
+    }
+
     ${({ $current }) => $current ? `
-      border-color: rgba(0,0,0,0.285714);
-      [data-color-scheme="dark"] & {
-        border-color: rgba(255,255,255,0.428571);
+      &::before {
+        opacity: 0.56;
       }
     ` : ``}
   }
@@ -420,7 +445,7 @@ function Header() {
 
   // Main nav (not sticky)
   const navContent = (
-    <Wrapper>
+    <Wrapper className="main-nav">
       <HeaderContainer>
         <Link href="/">
           <Title>
