@@ -395,7 +395,7 @@ main {
   min-height: calc(100vh - 473px);
 }
 
-@media only screen and (max-width: 1068px) {
+@media only screen and (max-width: 1024px) {
   main {
     min-height: calc(100vh - 634px);
   }

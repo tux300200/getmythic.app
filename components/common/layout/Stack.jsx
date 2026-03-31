@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import spacing from "@/styles/spacing";
+import getResponsivePropStyles from "@/styles/getResponsivePropStyles";
 
 const StackWrap = styled.div`
   display: flex;
-  flex-direction: ${({ $direction }) => ($direction === "vertical" ? `column` : `row`)}${({ $reverse }) => ($reverse ? `-reverse` : ``)};
+  ${({ $direction, $reverse }) =>
+    getResponsivePropStyles(
+      $direction,
+      (val) => `flex-direction: ${val === "vertical" ? `column` : `row`}${$reverse ? `-reverse` : ``};`
+    )}
   ${({ $gap }) =>
     $gap !== undefined && $gap !== null && $gap !== false
       ? `gap: ${Array.isArray($gap) ? spacing(...$gap) : spacing($gap)};`
@@ -35,18 +40,25 @@ const StackWrap = styled.div`
     margin: 0;
     flex: 0;
     border: 0;
-    ${({ $direction, theme }) =>
-      $direction === "horizontal"
-        ? `
+    ${({ $direction }) =>
+      getResponsivePropStyles(
+        $direction,
+        (val) =>
+          val === "horizontal"
+            ? `
         border-left: 1px solid var(--fill-gray-tertiary);
+        border-top: 0;
         width: 0;
-        flex-shrink: 0;
         height: auto;
+        flex-shrink: 0;
     `
-        : `
+            : `
         border-top: 1px solid var(--fill-gray-tertiary);
+        border-left: 0;
+        width: auto;
         height: 0;
-    `}
+    `
+      )}
   }
 `;
 

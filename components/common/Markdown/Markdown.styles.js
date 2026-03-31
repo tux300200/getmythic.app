@@ -29,11 +29,11 @@ export const MarkdownWrap = styled.div`
       margin-right: auto;
       max-width: 653px;
 
-      @media only screen and (max-width: 1068px) {
+      @media only screen and (max-width: 1024px) {
         max-width: 576px;
       }
 
-      @media only screen and (max-width: 734px) {
+      @media only screen and (max-width: 576px) {
         max-width: 87.5%;
       }
     }
@@ -69,7 +69,7 @@ export const MarkdownWrap = styled.div`
     margin-top: 44px;
     margin-bottom: 44px;
 
-    @media only screen and (max-width: 734px) {
+    @media only screen and (max-width: 576px) {
       margin-top: 32px;
       margin-bottom: 32px;
     }
@@ -296,11 +296,11 @@ export const MarkdownWrap = styled.div`
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
         'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
-      @media only screen and (max-width: 1068px) {
+      @media only screen and (max-width: 1024px) {
         max-width: 576px;
       }
 
-      @media only screen and (max-width: 734px) {
+      @media only screen and (max-width: 576px) {
         max-width: 87.5%;
       }
     }
@@ -402,7 +402,7 @@ export const MarkdownWrap = styled.div`
         margin-top: 72px;
         margin-bottom: 72px;
 
-        @media only screen and (max-width: 1068px) {
+        @media only screen and (max-width: 1024px) {
           padding: 1em;
         }
 
@@ -411,11 +411,11 @@ export const MarkdownWrap = styled.div`
           text-align: center;
           text-wrap: balance;
           font-size: 40px;
-          @media only screen and (max-width: 1068px) {
+          @media only screen and (max-width: 1024px) {
             font-size: 36px;
           }
 
-          @media only screen and (max-width: 734px) {
+          @media only screen and (max-width: 576px) {
             font-size: 27px;
           }
 
@@ -466,7 +466,7 @@ export const MarkdownWrap = styled.div`
       box-sizing: border-box;
       text-align: start;
 
-      @media only screen and (max-width: 734px) {
+      @media only screen and (max-width: 576px) {
         max-width: 87.5%;
       }
 
@@ -559,7 +559,7 @@ export const MarkdownWrap = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1068px) {
+  @media only screen and (max-width: 1024px) {
     font-size: 17px;
     line-height: 1.47059;
     font-weight: 400;
@@ -568,7 +568,7 @@ export const MarkdownWrap = styled.div`
       'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   }
 
-  @media only screen and (max-width: 1068px) {
+  @media only screen and (max-width: 1024px) {
     &,
     p,
     li,

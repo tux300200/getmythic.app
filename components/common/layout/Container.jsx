@@ -16,10 +16,10 @@ const Container = styled.div`
   @media ${mediaQueries.md} {
     margin-left: auto;
     margin-right: auto;
-    width: 692px;
+    max-width: 768px;
   }
   @media ${mediaQueries.sm} {
-    max-width: 366px;
+    max-width: 576px;
     width: calc(100% - ${smallGutter}px * 2);
     padding: 0 ${smallGutter}px;
     padding-left: calc(max(${smallGutter}px, env(safe-area-inset-left)));

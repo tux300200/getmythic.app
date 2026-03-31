@@ -10,6 +10,8 @@ import { Container } from '@/components/common/layout';
 import { mediaQueries } from '@/styles/breakpoints';
 import config from '@/data/config';
 
+const menuCollapseQuery = mediaQueries.md;
+
 const Nav = styled.nav`
   position: relative;
   top: 0;
@@ -22,7 +24,7 @@ const Nav = styled.nav`
   * {
     box-sizing: content-box;
   }
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     height: 48px;
   }
 `;
@@ -57,18 +59,18 @@ const Wrapper = styled.div`
     background-color: var(--thick-material-background-color);
   }
   &.island {
-    max-width: 1024px;
+    max-width: min(1024px, calc(100% - 20px));
     border-radius: 16px;
   }
   @media ${mediaQueries.md} {
     &.island {
-      max-width: 692px;
+      max-width: min(768px, calc(100% - 20px));
       border-radius: 18px;
     }
   }
   @media ${mediaQueries.sm} {
     &.island {
-      max-width: 366px;
+      max-width: min(576px, calc(100% - 20px));
       border-radius: 12px;
       margin-top: 8px;
     }
@@ -79,7 +81,7 @@ const HeaderContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     flex-direction: column;
     justify-content: stretch;
     align-items: flex-start;
@@ -140,7 +142,7 @@ const Menu = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     width: 100%;
   }
 `;
@@ -148,7 +150,7 @@ const MenuTray = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     float: none;
     overflow: hidden;
     pointer-events: none;
@@ -169,7 +171,7 @@ const MenuTray = styled.div`
   }
 `;
 const MenuItems = styled.ul`
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     width: 100%;
     opacity: 0;
     padding: 4px 24px 24px;
@@ -190,7 +192,7 @@ const MenuItem = styled.li`
   display: flex;
   gap: 4px;
   align-items: center;
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     margin-left: 0;
     display: inline-block;
     float: none;
@@ -270,7 +272,7 @@ const MenuLink = styled(Link)`
     color: var(--foreground-color) !important;
     opacity: 0.56;
   ` : ``}
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     border-top: 1px solid rgba(0,0,0,0.181818);
     /* border-top: 1px solid var(--separator-color); */
     [data-color-scheme="dark"] & {
@@ -306,7 +308,7 @@ const Actions = styled.div`
   display: flex;
   align-items: center;
   
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     right: 0;
     padding: 9px 16px;
     position: absolute;
@@ -323,7 +325,7 @@ const MenuToggle = styled.div`
   width: 40px;
   height: 30px;
   -webkit-tap-highlight-color: transparent;
-  @media ${mediaQueries.sm} {
+  @media ${menuCollapseQuery} {
     display: block;
   }
 `;
