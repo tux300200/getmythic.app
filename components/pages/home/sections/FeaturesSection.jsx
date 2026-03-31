@@ -121,7 +121,7 @@ const FeaturesSection = () => {
           </FeatureSplitStack>
         </GridItem>
         <GridItem as={Tile} width={{ lg: 2 }} style={{background: 'linear-gradient(180deg, #7541FF, #5412FF)', color: 'white'}}>
-          <FeatureSplitStack direction={{ xs: 'vertical', md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
+          <FeatureSplitStack direction={{ md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Download />
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow" style={{color: 'white'}}>What&apos;re you still waiting for?</Typography>
@@ -141,7 +141,7 @@ const FeaturesSection = () => {
           </FeatureSplitStack>
         </GridItem>
         <GridItem as={Tile} width={{ lg: 2, xl: 1 }}>
-          <FeatureSplitStack direction={{ xs: 'vertical', md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
+          <FeatureSplitStack direction={{ md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow"><HighlightedText>Powerful</HighlightedText> game controls.</Typography>
               <Typography variant="body">
@@ -165,7 +165,7 @@ const FeaturesSection = () => {
           </FeatureSplitStack>
         </GridItem>
         <GridItem width={{ lg: 2 }} as={Tile}>
-          <FeatureSplitStack direction={{ xs: 'vertical', md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
+          <FeatureSplitStack direction={{md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow">Less managing, <HighlightedText>more gaming.</HighlightedText></Typography>
               <Typography variant="body">
@@ -185,8 +185,8 @@ const FeaturesSection = () => {
             </div>
           </FeatureSplitStack>
         </GridItem>
-        <GridItem as={Tile} width={ 1 }>
-          <FeatureSplitStack direction='vertical' gap={2}>
+        <GridItem as={Tile} width={{ lg: 2, xl: 1 }}>
+          <FeatureSplitStack direction={{md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow">Containers for dummies.</Typography>
               <Typography variant="body">
@@ -206,8 +206,8 @@ const FeaturesSection = () => {
             </div>
           </FeatureSplitStack>
         </GridItem>
-        <GridItem as={Tile} width={ 1 }>
-          <FeatureSplitStack direction='vertical' gap={2}>
+        <GridItem as={Tile} width={{ lg: 2, xl: 1 }} >
+          <FeatureSplitStack direction={{md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow">It just works!</Typography>
               <Typography variant="body">
@@ -228,7 +228,7 @@ const FeaturesSection = () => {
           </FeatureSplitStack>
         </GridItem>
         <GridItem as={Tile} width={{ lg: 2, xl: 1 }} >
-          <FeatureSplitStack direction='vertical' gap={2}>
+          <FeatureSplitStack direction={{md: 'vertical', lg: 'horizontal', xl: 'vertical' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow">Open-source, <HighlightedText>open season.</HighlightedText></Typography>
               <Typography variant="body">
