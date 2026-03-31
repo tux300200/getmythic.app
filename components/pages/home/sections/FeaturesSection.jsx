@@ -73,7 +73,7 @@ const FeaturesSection = () => {
       </Stack>
       <Grid columns={{ lg: 2, xl: 3 }} gap>
         <GridItem as={Tile} width={{ lg: 2 }}>
-          <FeatureSplitStack direction={{ lg: 'horizontal' }} gap={2}>
+          <FeatureSplitStack direction={{ md: 'vertical', lg: 'horizontal' }} gap={2}>
             <Stack className="feature-copy" direction='vertical' gap={2}>
               <Typography variant="eyebrow">Plenty of games, <HighlightedText>one place.</HighlightedText></Typography>
               <Typography variant="body">
