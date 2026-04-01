@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const COLOR_SCHEME_TRANSITION_CLASS = 'color-scheme-transition';
+const COLOR_SCHEME_TRANSITION_DURATION_MS = 400;
 
 const getColorSchemeSetting = () =>
   window.localStorage.getItem('colorScheme') ?? 'auto';
@@ -13,6 +16,9 @@ const getSystemColorScheme = () => {
 const useColorScheme = () => {
   const [colorSchemeSetting, setColorSchemeSetting] = useState('auto');
   const [colorScheme, setColorScheme] = useState('light');
+  const transitionTimeoutRef = useRef(null);
+  const hasHydratedRef = useRef(false);
+  const previousColorSchemeRef = useRef(null);
 
   useEffect(() => {
     const pref = window.localStorage.getItem('colorScheme') ?? 'auto';
@@ -46,8 +52,40 @@ const useColorScheme = () => {
   }, []);
 
   useEffect(() => {
-    document.children[0].setAttribute('data-color-scheme', colorScheme);
+    const root = document.documentElement;
+    const shouldAnimate =
+      hasHydratedRef.current &&
+      previousColorSchemeRef.current &&
+      previousColorSchemeRef.current !== colorScheme &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (shouldAnimate) {
+      root.classList.add(COLOR_SCHEME_TRANSITION_CLASS);
+      if (transitionTimeoutRef.current) {
+        window.clearTimeout(transitionTimeoutRef.current);
+      }
+    }
+
+    root.setAttribute('data-color-scheme', colorScheme);
+    root.style.colorScheme = colorScheme;
+
+    if (shouldAnimate) {
+      transitionTimeoutRef.current = window.setTimeout(() => {
+        root.classList.remove(COLOR_SCHEME_TRANSITION_CLASS);
+        transitionTimeoutRef.current = null;
+      }, COLOR_SCHEME_TRANSITION_DURATION_MS);
+    }
+
+    previousColorSchemeRef.current = colorScheme;
+    hasHydratedRef.current = true;
   }, [colorScheme]);
+
+  useEffect(() => () => {
+    if (transitionTimeoutRef.current) {
+      window.clearTimeout(transitionTimeoutRef.current);
+    }
+    document.documentElement.classList.remove(COLOR_SCHEME_TRANSITION_CLASS);
+  }, []);
 
   return {
     colorSchemeSetting,

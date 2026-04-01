@@ -81,6 +81,7 @@ body {
 
 html {
   height: 100%;
+  color-scheme: light dark;
 }
 
 a {
@@ -92,6 +93,7 @@ a {
   html:not([data-color-scheme]) {
     background-color: black;
     color: white;
+    color-scheme: dark;
   }
 }
 
@@ -99,6 +101,7 @@ a {
   html:not([data-color-scheme]) {
     background-color: white;
     color: black;
+    color-scheme: light;
   }
 }
 
@@ -109,10 +112,30 @@ html:not([data-color-scheme]) body {
 html[data-color-scheme='light'] {
   background-color: white;
   color: black;
+  color-scheme: light;
 }
 html[data-color-scheme='dark'] {
   background-color: black;
   color: white;
+  color-scheme: dark;
+}
+
+html.color-scheme-transition,
+html.color-scheme-transition *,
+html.color-scheme-transition *::before,
+html.color-scheme-transition *::after {
+  transition-property: background-color, color, border-color, outline-color, text-decoration-color, fill, stroke, box-shadow;
+  transition-duration: 380ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.color-scheme-transition,
+  html.color-scheme-transition *,
+  html.color-scheme-transition *::before,
+  html.color-scheme-transition *::after {
+    transition-duration: 0ms;
+  }
 }
 
 :root {
