@@ -465,8 +465,14 @@ function Header() {
                 const isExternal = href.match(/(https?:\/\/[\w\d.-]+)/gi);
                 const item = config.pages[href];
                 return (
-                  <MenuItem key={href} {...(isExternal ? { target: "_blank" } : {})}>
-                    <MenuLink onClick={() => setIsOpen(false)} href={href} $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}>
+                  <MenuItem key={href}>
+                    <MenuLink
+                      onClick={() => setIsOpen(false)}
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}
+                    >
                       {item.title}
                       {isExternal && <StyledExternalLink size={11} />}
                     </MenuLink>
@@ -517,8 +523,14 @@ function Header() {
                 const isExternal = href.match(/(https?:\/\/[\w\d.-]+)/gi);
                 const item = config.pages[href];
                 return (
-                  <MenuItem key={href} {...(isExternal ? { target: "_blank" } : {})}>
-                    <MenuLink onClick={() => setIsOpen(false)} href={href} $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}>
+                  <MenuItem key={href}>
+                    <MenuLink
+                      onClick={() => setIsOpen(false)}
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}
+                    >
                       {item.title}
                       {isExternal && <StyledExternalLink size={11} />}
                     </MenuLink>
