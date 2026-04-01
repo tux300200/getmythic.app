@@ -271,7 +271,7 @@ const MenuLink = styled(Link)`
     bottom: -14px;
     width: 100%;
     height: 1.5px;
-    background: #fff;
+    background: currentColor;
     opacity: ${({ $current }) => $current ? 1 : 0};
     transform: scaleX(${({ $current }) => $current ? 1 : 0.85});
     transform-origin: center;
